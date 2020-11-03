@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    tools:context=".HomeActivity">
+    <TextView
+        android:id="@+id/WelcomeUserTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Welcome User"
+        android:textAlignment="center"
+        android:gravity="center_horizontal"
+        android:textSize="30sp"
+        android:textColor="#000"
+        android:layout_margin="30dp"/>
+    <Button
+        android:id="@+id/CurrentDataBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minWidth="300dp"
+        android:text="Current Data"
+        android:textSize="30sp"
+        android:layout_margin="20dp"/>
+    <Button
+        android:id="@+id/HistoryDataBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minWidth="300dp"
+        android:text="History"
+        android:textSize="30sp"
+        android:layout_margin="20dp"/>
+    <Button
+        android:id="@+id/SettingBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minWidth="300dp"
+        android:text="Setting"
+        android:textSize="30sp"
+        android:layout_margin="20dp"/>
+
+</LinearLayout>

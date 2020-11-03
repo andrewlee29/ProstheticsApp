@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CurrentDataActivity">
+
+  <TextView
+      android:id="@+id/tempTv"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="50dp"
+      android:layout_marginLeft="50dp"
+      android:text="Device Environment"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.015"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.095" />
+
+  <TextView
+      android:id="@+id/bodypartDetectedTv"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="48dp"
+      android:text="Body Part Detected"
+      app:layout_constraintEnd_toEndOf="@+id/tempTv"
+      app:layout_constraintHorizontal_bias="0.0"
+      app:layout_constraintStart_toStartOf="@+id/tempTv"
+      app:layout_constraintTop_toBottomOf="@+id/tempTv" />
+
+  <TextView
+      android:id="@+id/muscleStatusTv"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="48dp"
+      android:text="Muscle Status"
+      app:layout_constraintEnd_toEndOf="@+id/bodypartDetectedTv"
+      app:layout_constraintHorizontal_bias="0.0"
+      app:layout_constraintStart_toStartOf="@+id/bodypartDetectedTv"
+      app:layout_constraintTop_toBottomOf="@+id/bodypartDetectedTv" />
+
+  <Button
+      android:id="@+id/morebtn"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="268dp"
+      android:text="More"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="@+id/muscleStatusDataTv"
+      app:layout_constraintHorizontal_bias="0.493"
+      app:layout_constraintStart_toStartOf="@+id/muscleStatusTv"
+      app:layout_constraintTop_toBottomOf="@+id/tempTv"
+      app:layout_constraintVertical_bias="0.987" />
+
+  <TextView
+      android:id="@+id/tempdataTv"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginEnd="50dp"
+      android:layout_marginRight="50dp"
+      android:text="TextView"
+      app:layout_constraintBottom_toBottomOf="@+id/tempTv"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.981"
+      app:layout_constraintStart_toEndOf="@+id/tempTv"
+      app:layout_constraintTop_toTopOf="@+id/tempTv"
+      app:layout_constraintVertical_bias="0.0" />
+
+  <TextView
+      android:id="@+id/humiddataTv"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="96dp"
+      android:layout_marginLeft="96dp"
+      android:text="TextView"
+      app:layout_constraintBottom_toBottomOf="@+id/bodypartDetectedTv"
+      app:layout_constraintEnd_toEndOf="@+id/tempdataTv"
+      app:layout_constraintHorizontal_bias="1.0"
+      app:layout_constraintStart_toStartOf="@+id/tempdataTv"
+      app:layout_constraintTop_toTopOf="@+id/bodypartDetectedTv"
+      app:layout_constraintVertical_bias="0.0" />
+
+  <TextView
+      android:id="@+id/muscleStatusDataTv"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="TextView"
+      app:layout_constraintBottom_toBottomOf="@+id/muscleStatusTv"
+      app:layout_constraintEnd_toEndOf="@+id/tempdataTv"
+      app:layout_constraintHorizontal_bias="0.0"
+      app:layout_constraintStart_toStartOf="@+id/tempdataTv"
+      app:layout_constraintTop_toTopOf="@+id/muscleStatusTv"
+      app:layout_constraintVertical_bias="1.0" />
+</androidx.constraintlayout.widget.ConstraintLayout>

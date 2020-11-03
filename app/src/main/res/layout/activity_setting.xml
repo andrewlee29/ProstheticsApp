@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SettingActivity">
+
+    <TextView
+        android:id="@+id/bluetoothTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginLeft="48dp"
+        android:text="Bluetooth"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.098" />
+
+    <Button
+        android:id="@+id/bluetoothBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="136dp"
+        android:layout_marginLeft="136dp"
+        android:layout_marginEnd="48dp"
+        android:layout_marginRight="48dp"
+        android:text="On/Off"
+        app:layout_constraintBottom_toBottomOf="@+id/bluetoothTv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/bluetoothTv"
+        app:layout_constraintTop_toTopOf="@+id/bluetoothTv" />
+
+    <TextView
+        android:id="@+id/mydeviceTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="68dp"
+        android:text="My Device"
+        app:layout_constraintEnd_toEndOf="@+id/bluetoothTv"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/bluetoothTv"
+        app:layout_constraintTop_toBottomOf="@+id/bluetoothTv" />
+
+    <Button
+        android:id="@+id/scanBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Scan"
+        app:layout_constraintBottom_toBottomOf="@+id/mydeviceTv"
+        app:layout_constraintEnd_toEndOf="@+id/bluetoothBtn"
+        app:layout_constraintStart_toStartOf="@+id/bluetoothBtn"
+        app:layout_constraintTop_toTopOf="@+id/mydeviceTv"
+        app:layout_constraintVertical_bias="0.482" />
+
+    <ListView
+        android:id="@+id/deviceLv"
+        android:layout_width="324dp"
+        android:layout_height="393dp"
+        android:layout_marginTop="36dp"
+        app:layout_constraintEnd_toEndOf="@+id/scanBtn"
+        app:layout_constraintStart_toStartOf="@+id/mydeviceTv"
+        app:layout_constraintTop_toBottomOf="@+id/statusTv" />
+
+    <TextView
+        android:id="@+id/statusTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="Status"
+        app:layout_constraintEnd_toEndOf="@+id/scanBtn"
+        app:layout_constraintHorizontal_bias="0.481"
+        app:layout_constraintStart_toStartOf="@+id/mydeviceTv"
+        app:layout_constraintTop_toBottomOf="@+id/mydeviceTv" />
+</androidx.constraintlayout.widget.ConstraintLayout>
