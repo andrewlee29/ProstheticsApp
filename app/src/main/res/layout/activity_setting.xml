@@ -68,6 +68,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
+        android:textStyle="bold|italic"
+        android:textSize="20dp"
         android:text="Status"
         app:layout_constraintEnd_toEndOf="@+id/scanBtn"
         app:layout_constraintHorizontal_bias="0.481"

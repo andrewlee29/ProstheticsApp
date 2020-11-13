@@ -2,10 +2,10 @@ package com.example.prostheticsapp;
 
 public class HistoryItem {
     private String date;
-    private int temp;
-    private int humid;
+    private String temp;
+    private String humid;
 
-    public HistoryItem(String date, int temp, int humid)
+    public HistoryItem(String date, String temp, String humid)
     {
         this.date = date;
         this.temp = temp;
@@ -19,19 +19,19 @@ public class HistoryItem {
         this.date = date;
     }
 
-    public int getTemp() {
+    public String getTemp() {
         return temp;
     }
 
-    public void setTemp(int temp) {
+    public void setTemp(String temp) {
         this.temp = temp;
     }
 
-    public int getHumid() {
+    public String getHumid() {
         return humid;
     }
 
-    public void setHumid(int humid) {
+    public void setHumid(String humid) {
         this.humid = humid;
     }
 }

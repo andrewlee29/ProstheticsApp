@@ -2,6 +2,7 @@ package com.example.prostheticsapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.content.Intent;
@@ -28,6 +29,7 @@ public class SettingActivity extends AppCompatActivity implements OnConnectedAct
     public static String EXTRA_ADDRESS = "device_address";
     private BluetoothConnection blueConnection;
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,10 +49,10 @@ public class SettingActivity extends AppCompatActivity implements OnConnectedAct
 
         if(blueConnection.isConnected())
         {
-            mstatustv.setText("Connected");
+            mstatustv.setText("Status: Connected");
         }
         else{
-            mstatustv.setText("No Connection");
+            mstatustv.setText("Status: Disconnected");
         }
         // bluetooth on and off
         mbluetoothbtn.setOnClickListener(new View.OnClickListener(){
@@ -115,7 +117,7 @@ public class SettingActivity extends AppCompatActivity implements OnConnectedAct
                 {
                     //disconnect
                     blueConnection.endConnection();
-                    mstatustv.setText("No Connection");
+                    mstatustv.setText("Status: Disconnected");
                 }
                 else{
                     blueConnection.setDeviceAddress(address);

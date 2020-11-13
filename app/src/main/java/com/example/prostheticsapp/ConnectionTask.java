@@ -64,7 +64,7 @@ public class ConnectionTask extends AsyncTask<Void, Void, Void> {
             isConnected = true;
             //Change the textview in activity
             if (onConnectedAction != null)
-                onConnectedAction.onConnected("Connected");
+                onConnectedAction.onConnected("Status: Connected");
         }
         mProgressDialog.dismiss();
     }

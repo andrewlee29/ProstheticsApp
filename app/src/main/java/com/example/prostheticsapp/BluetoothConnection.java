@@ -8,6 +8,7 @@ public class BluetoothConnection {
     protected ConnectionTask mBluetoothConnection;
     private Context context;
     private OnConnectedAction onConnectedAction;
+    private boolean fullmsgreceived = false;
     public BluetoothConnection(Context context) {
         this.context = context;
         this.onConnectedAction = onConnectedAction;
@@ -48,22 +49,32 @@ public class BluetoothConnection {
 
     //--------------------------------------------------------------------------
     //data transfer testing
-    private String mMessageFromServer = "";
-    public void testsendmessage()
+//    public void testsendmessage()
+//    {
+//        mBluetoothConnection.write((byte)'a');
+//        mBluetoothConnection.write((byte)'u');
+//        mBluetoothConnection.write((byte)'.');
+//    }
+    public void testsendmessage(String message)
     {
-        mBluetoothConnection.write((byte)'a');
-        mBluetoothConnection.write((byte)'u');
+        for(int i=0; i<message.length();i++)
+        {
+            char c = message.charAt(i);
+            mBluetoothConnection.write((byte)c);
+        }
         mBluetoothConnection.write((byte)'.');
     }
     public String testrecievemessage()
     {
+        String mMessageFromServer = "";
         while (mBluetoothConnection.available() > 0) {
 
             char c = (char)mBluetoothConnection.read();
 
-            if (c == '.') {
+            if (c == '@') {
 
                 if (mMessageFromServer.length() > 0) {
+
                     return mMessageFromServer;
                 }
             }

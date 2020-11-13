@@ -27,34 +27,30 @@ public class HomeActivity extends AppCompatActivity {
         mCurrentDataBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(HomeActivity.this, CurrentDataActivity.class);
-                startActivity(intent);
-//                if(blueConnection.isConnected())
-//                {
-//                    Intent intent = new Intent(HomeActivity.this, CurrentDataActivity.class);
-//                    startActivity(intent);
-//                }
-//                else
-//                {
-//                    showToast("Please link the device first!!");
-//                }
+                if(blueConnection.isConnected())
+                {
+                    Intent intent = new Intent(HomeActivity.this, CurrentDataActivity.class);
+                    startActivity(intent);
+                }
+                else
+                {
+                    showToast("Please link the device first!!");
+                }
             }
         });
         //HistoryDataBtn onClick
         mHistoryDataBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(HomeActivity.this, HistoryActivity.class);
-                startActivity(intent);
-//                if(blueConnection.isConnected())
-//                {
-//                    Intent intent = new Intent(HomeActivity.this, HistoryActivity.class);
-//                    startActivity(intent);
-//                }
-//                else
-//                {
-//                    showToast("Please link the device first!!");
-//                }
+                if(blueConnection.isConnected())
+                {
+                    Intent intent = new Intent(HomeActivity.this, HistoryActivity.class);
+                    startActivity(intent);
+                }
+                else
+                {
+                    showToast("Please link the device first!!");
+                }
             }
         });
         //Setting Btn onClick

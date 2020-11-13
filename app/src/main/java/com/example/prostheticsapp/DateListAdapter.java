@@ -27,8 +27,8 @@ public class DateListAdapter extends ArrayAdapter<HistoryItem> {
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         String date = getItem(position).getDate();
-        int temp = getItem(position).getTemp();
-        int humid = getItem(position).getHumid();
+        String temp = getItem(position).getTemp();
+        String humid = getItem(position).getHumid();
 
         HistoryItem item = new HistoryItem(date,temp,humid);
 
