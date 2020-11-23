@@ -69,4 +69,38 @@
         app:layout_constraintStart_toStartOf="@+id/humidTv"
         app:layout_constraintTop_toBottomOf="@+id/humidTv"
         app:layout_constraintVertical_bias="0.242" />
+
+    <TextView
+        android:id="@+id/SectonTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:text="Section"
+        app:layout_constraintBottom_toTopOf="@+id/emgChart1"
+        app:layout_constraintEnd_toEndOf="@+id/humidTv"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/humidTv" />
+
+    <Button
+        android:id="@+id/previousbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Previous"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/emgChart1"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/emgChart1"
+        app:layout_constraintTop_toBottomOf="@+id/emgChart1"
+        app:layout_constraintVertical_bias="0.053" />
+
+    <Button
+        android:id="@+id/nextbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Next"
+        app:layout_constraintBottom_toBottomOf="@+id/previousbtn"
+        app:layout_constraintEnd_toEndOf="@+id/emgChart1"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/emgChart1"
+        app:layout_constraintTop_toTopOf="@+id/previousbtn" />
 </androidx.constraintlayout.widget.ConstraintLayout>

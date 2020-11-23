@@ -1,4 +1,4 @@
-package com.example.prostheticsapp;
+package Bluetooth;
 
 import android.app.ProgressDialog;
 import android.bluetooth.BluetoothAdapter;
@@ -6,9 +6,11 @@ import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
 import android.content.Context;
 import android.os.AsyncTask;
+import android.util.Log;
 import android.widget.Toast;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.UUID;
 
 public class ConnectionTask extends AsyncTask<Void, Void, Void> {
@@ -84,11 +86,28 @@ public class ConnectionTask extends AsyncTask<Void, Void, Void> {
 
         try {
             i = mBluetoothSocket.getInputStream().read();
+            Log.d("ZZZZZZZZZZZZZZZZ",String.valueOf((char)i));
         }
         catch (IOException e) {
         }
 
         return i;
+    }
+
+    public byte[] readBytes() {
+
+        int i = -1;
+        byte[] bb = new byte[10];
+
+        try {
+            i = mBluetoothSocket.getInputStream().read(bb, 0, 10);
+            //Log.d("ZZZZZZZZZZZZZZZZ", Arrays.toString(bb));
+        }
+        catch (IOException e) {
+        }
+
+
+        return bb;
     }
 
     public int available() {

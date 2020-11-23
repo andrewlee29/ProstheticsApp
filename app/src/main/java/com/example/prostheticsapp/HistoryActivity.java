@@ -4,13 +4,18 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.google.gson.Gson;
+
 import java.util.ArrayList;
+import java.util.List;
+
+import Bluetooth.BluetoothConnection;
+import JsonReader.Historylistdata;
+import JsonReader.Summarydata;
 
 public class HistoryActivity extends AppCompatActivity {
 
@@ -34,23 +39,6 @@ public class HistoryActivity extends AppCompatActivity {
         ArrayList<HistoryItem> DateList = new ArrayList<>();
         DateListAdapter adapter = new DateListAdapter(this, R.layout.dateadpter_view_layout,DateList);
         mListView.setAdapter(adapter);
-        //recieve message after 1 seconds
-        final Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                // Do something after 1s = 1000ms
-                messagefromserver = blueConnection.testrecievemessage();
-                String[] arrOfStr = messagefromserver.split("#", -2);
-                for(int i =0; i<arrOfStr.length-1;i+=3)
-                {
-                    //arrOfStr[i]=date   arrOfStr[i+1]=temp  arrOfStr[i+2]=humid
-                    HistoryItem sample1 =  new HistoryItem(arrOfStr[i],arrOfStr[i+1],arrOfStr[i+2]);
-                    DateList.add(sample1);
-                }
-                mListView.setAdapter(adapter);
-            }
-        }, 1000);
 
         //Item OnClick
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -62,5 +50,30 @@ public class HistoryActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                messagefromserver = blueConnection.testrecievemessage();
+                while (messagefromserver == null) {
+                    messagefromserver = blueConnection.testrecievemessage();
+                }
+                blueConnection.resetRecieveStatus();
+
+                Gson gson = new Gson();
+                Historylistdata historylistdata = gson.fromJson(messagefromserver, Historylistdata.class);
+                for(int i =0; i<historylistdata.gethistorydate().size();i++)
+                {
+                    String date = historylistdata.gethistorydate().get(i).getDate();
+                    String temp = historylistdata.gethistorydate().get(i).getTemp();
+                    String humid = historylistdata.gethistorydate().get(i).getHumid();
+                    HistoryItem sample1 = new HistoryItem(date,temp,humid);
+                    DateList.add(sample1);
+                }
+                mListView.setAdapter(adapter);
+
+            }
+        });
+
     }
 }

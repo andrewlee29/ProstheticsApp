@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import Bluetooth.BluetoothConnection;
+
 public class HomeActivity extends AppCompatActivity {
 
     Button mCurrentDataBtn, mHistoryDataBtn, mSettingBtn;

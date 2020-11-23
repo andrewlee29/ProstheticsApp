@@ -1,6 +1,9 @@
-package com.example.prostheticsapp;
+package Bluetooth;
 
 import android.content.Context;
+import android.util.Log;
+
+import java.util.Arrays;
 
 public class BluetoothConnection {
     public String mDeviceAddress = null;
@@ -8,7 +11,7 @@ public class BluetoothConnection {
     protected ConnectionTask mBluetoothConnection;
     private Context context;
     private OnConnectedAction onConnectedAction;
-    private boolean fullmsgreceived = false;
+    public boolean fullmsgreceived = false;
     public BluetoothConnection(Context context) {
         this.context = context;
         this.onConnectedAction = onConnectedAction;
@@ -69,19 +72,43 @@ public class BluetoothConnection {
         String mMessageFromServer = "";
         while (mBluetoothConnection.available() > 0) {
 
-            char c = (char)mBluetoothConnection.read();
-
+            /*char c = (char)mBluetoothConnection.read();
             if (c == '@') {
 
                 if (mMessageFromServer.length() > 0) {
-
+                    fullmsgreceived = true;
                     return mMessageFromServer;
                 }
             }
             else {
                 mMessageFromServer += c;
+            }*/
+
+            byte[] dd = mBluetoothConnection.readBytes();
+
+            for (int j = 0; j < dd.length; j++) {
+                char c = (char)dd[j];
+                Log.d("ZZZZZZZZZZZZZZZZ", String.valueOf(c));
+                if (c == '@') {
+                    if (mMessageFromServer.length() > 0) {
+                        fullmsgreceived = true;
+                        return mMessageFromServer;
+                    }
+                }
+                else {
+                    mMessageFromServer += c;
+                }
             }
         }
         return null;
     }
+    // check if there is a connection built
+    public boolean IsRecieved(){
+        return fullmsgreceived;
+    }
+    public void resetRecieveStatus(){
+        fullmsgreceived = false;
+    }
 }
+
+

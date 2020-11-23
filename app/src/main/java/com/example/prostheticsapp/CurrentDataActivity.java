@@ -4,10 +4,16 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
+
+import Bluetooth.BluetoothConnection;
+import JsonReader.Summarydata;
 
 public class CurrentDataActivity extends AppCompatActivity {
 
@@ -31,21 +37,6 @@ public class CurrentDataActivity extends AppCompatActivity {
 
         //send request for current data"
         blueConnection.testsendmessage("requestSum");
-        //recieve message after 1 seconds
-        final Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                // Do something after 1s = 1000ms
-                messagefromserver = blueConnection.testrecievemessage();
-                String[] arrOfStr = messagefromserver.split("#", 5);
-                dateDataTv.setText(arrOfStr[0]);
-                mdevEnviromentDataTv.setText(arrOfStr[1]);
-                mmuscleStatusDataTv.setText(arrOfStr[2]);
-
-            }
-        }, 500);
-
         //more button on click
         mmorebtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,24 +45,29 @@ public class CurrentDataActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        runOnUiThread(new Runnable() {
+                          @Override
+                          public void run() {
+                              messagefromserver = blueConnection.testrecievemessage();
+                              while (messagefromserver == null) {
+                                  messagefromserver = blueConnection.testrecievemessage();
+                              }
+                              blueConnection.resetRecieveStatus();
+                              // Received data , load json data to display
+                              Gson gson = new Gson();
+                              try {
+                                  Summarydata summarydata = gson.fromJson(messagefromserver, Summarydata.class);
+                                  dateDataTv.setText(summarydata.getDate());
+                                  mdevEnviromentDataTv.setText(summarydata.getEnvironmentStatus());
+                                  mmuscleStatusDataTv.setText(summarydata.getMuscleStatus());
 
+                              } catch (JsonSyntaxException e) {
+                                  Log.d("Er","jsondata is wrong");
+                                  e.printStackTrace();
+                              }
 
+                          }
+                      });
 
-
-
-
-        //--------------------------------------------------------------------------
-        //example send and get message from raspberry
-
-//        blueConnection.testsendmessage("au");
-//        final Handler handler = new Handler();
-//        handler.postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//                // Do something after 1s = 1000ms
-//                String a = blueConnection.testrecievemessage();
-//                Log.d("Test123", "Test2 Message :"+a);
-//            }
-//        }, 1000);
     }
 }
