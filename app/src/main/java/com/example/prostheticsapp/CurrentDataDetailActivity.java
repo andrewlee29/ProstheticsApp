@@ -50,8 +50,6 @@ public class CurrentDataDetailActivity extends AppCompatActivity {
             public void run() {
                 blueConnection.testsendmessage("requestRealtime");
                 String[] historydetaildata = getserverdata();
-                humiddataTv.setText("/");
-                tempdataTv.setText("/");
                 updatechart(historydetaildata,datavals);
                 handler.postDelayed(this, 200);
 
@@ -81,7 +79,9 @@ public class CurrentDataDetailActivity extends AppCompatActivity {
     private void updatechart(String[] historydetaildata, ArrayList<Entry> datavals){
         String time = historydetaildata[0];
         String mV = historydetaildata[1];
-        datavals.add(new Entry(Integer.parseInt(time),Integer.parseInt(mV)));
+        String humid = historydetaildata[2];
+        String temp = historydetaildata[3];
+        datavals.add(new Entry(Float.parseFloat(time),Integer.parseInt(mV)));
         if(datavals.size() == 20)
         {
             datavals.remove(0);
@@ -94,5 +94,7 @@ public class CurrentDataDetailActivity extends AppCompatActivity {
         emgLineChart1.setData(data);
         emgLineChart1.invalidate();
         Log.d("ZZZZZZZZZZ","Chart updated");
+        humiddataTv.setText(humid);
+        tempdataTv.setText(temp);
     }
 }

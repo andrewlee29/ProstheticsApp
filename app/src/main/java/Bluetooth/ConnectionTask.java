@@ -80,19 +80,19 @@ public class ConnectionTask extends AsyncTask<Void, Void, Void> {
         }
     }
 
-    public int read() {
-
-        int i = -1;
-
-        try {
-            i = mBluetoothSocket.getInputStream().read();
-            Log.d("ZZZZZZZZZZZZZZZZ",String.valueOf((char)i));
-        }
-        catch (IOException e) {
-        }
-
-        return i;
-    }
+//    public int read() {
+//
+//        int i = -1;
+//
+//        try {
+//            i = mBluetoothSocket.getInputStream().read();
+//            Log.d("ZZZZZZZZZZZZZZZZ",String.valueOf((char)i));
+//        }
+//        catch (IOException e) {
+//        }
+//
+//        return i;
+//    }
 
     public byte[] readBytes() {
 

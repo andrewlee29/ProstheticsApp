@@ -65,7 +65,7 @@ public class BluetoothConnection {
             char c = message.charAt(i);
             mBluetoothConnection.write((byte)c);
         }
-        mBluetoothConnection.write((byte)'.');
+        mBluetoothConnection.write((byte)'@');
     }
     public String testrecievemessage()
     {
